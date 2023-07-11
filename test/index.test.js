@@ -1,6 +1,8 @@
 const { run } = require('../src');
 
 test('addition', () => {
+  console.log = jest.fn()
+
   var operator = [0]
 
   var numCount = 2;
@@ -24,5 +26,6 @@ test('addition', () => {
   var resultCount = 10;
 
   run(operator, numCount, range, resultRange, plusRule, minusRule, divideRule, resultCount);
-  
+
+  expect(console.log.mock.calls[0][0]).toContainEqual("+")
 });
